@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Fluf 💖🎀</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    background:radial-gradient(circle at top,#1b1b2f,#0f0f1a 70%);
+    font-family:'Segoe UI',sans-serif;
+    text-align:center;
+    color:white;
+}
+
+/* 🌙 Moon */
+.moon{
+    position:absolute;
+    top:40px;
+    right:60px;
+    width:90px;
+    height:90px;
+    background:radial-gradient(circle,#fff,#dcdcdc);
+    border-radius:50%;
+    box-shadow:0 0 40px rgba(255,255,255,0.6);
+}
+
+/* ✨ Stars */
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    from{opacity:0.3;}
+    to{opacity:1;}
+}
+
+/* 💗 Floating hearts */
+.heart{
+    position:absolute;
+    font-size:18px;
+    animation:floatUp 7s linear infinite;
+}
+@keyframes floatUp{
+    from{transform:translateY(100vh);opacity:1;}
+    to{transform:translateY(-10vh);opacity:0;}
+}
+
+/* 🎂 Cake Scene */
+.scene{
+    perspective:1000px;
+    margin-bottom:60px;
+}
+
+/* Cake container */
+.cake{
+    width:220px;
+    height:180px;
+    margin:0 auto;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:floatCake 6s ease-in-out infinite alternate;
+    cursor:pointer;
+}
+@keyframes floatCake{
+    from{transform:rotateY(-12deg) rotateX(8deg);}
+    to{transform:rotateY(12deg) rotateX(-8deg);}
+}
+
+/* Bottom Layer */
+.layer.bottom{
+    position:absolute;
+    bottom:0;
+    width:220px;
+    height:90px;
+    background:linear-gradient(to right,#ff6fa5,#c9184a,#ff6fa5);
+    border-radius:50% / 20%;
+    box-shadow:inset -10px 0 25px rgba(0,0,0,0.4),
+               inset 10px 0 20px rgba(255,255,255,0.2);
+}
+
+/* Top Layer */
+.layer.top-layer{
+    position:absolute;
+    bottom:70px;
+    left:20px;
+    width:180px;
+    height:80px;
+    background:linear-gradient(to right,#ff85a1,#ff477e,#ff85a1);
+    border-radius:50% / 20%;
+}
+
+/* Frosting */
+.frost{
+    position:absolute;
+    bottom:130px;
+    left:20px;
+    width:180px;
+    height:40px;
+    background:#fff0f6;
+    border-radius:50%;
+    box-shadow:0 0 20px rgba(255,192,203,0.5);
+}
+
+/* Drip */
+.drip{
+    position:absolute;
+    bottom:100px;
+    left:20px;
+    width:180px;
+    height:40px;
+    background:#fff0f6;
+    border-radius:0 0 50% 50%;
+}
+
+/* Sprinkles */
+.sprinkles{
+    position:absolute;
+    bottom:145px;
+    left:40px;
+    width:140px;
+    height:20px;
+    background:
+        radial-gradient(circle, pink 2px, transparent 3px),
+        radial-gradient(circle, yellow 2px, transparent 3px),
+        radial-gradient(circle, cyan 2px, transparent 3px);
+    background-size:20px 20px;
+}
+
+/* Glow under cake */
+.glow{
+    position:absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:200px;
+    height:40px;
+    background:radial-gradient(circle,rgba(255,105,180,0.4),transparent);
+    border-radius:50%;
+}
+
+/* Name */
+.name{
+    position:absolute;
+    bottom:60px;
+    width:100%;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 0 12px hotpink;
+}
+
+/* Candle */
+.candle{
+    position:absolute;
+    bottom:160px;
+    left:50%;
+    transform:translateX(-50%);
+    width:10px;
+    height:40px;
+    background:white;
+}
+
+/* Flame */
+.flame{
+    position:absolute;
+    bottom:205px;
+    left:50%;
+    transform:translateX(-50%);
+    width:16px;
+    height:16px;
+    background:gold;
+    border-radius:50%;
+    box-shadow:0 0 20px gold;
+    animation:flicker 0.2s infinite alternate;
+}
+@keyframes flicker{
+    from{transform:translateX(-50%) scale(1);}
+    to{transform:translateX(-50%) scale(1.25);}
+}
+
+/* Smoke */
+.smoke{
+    position:absolute;
+    bottom:210px;
+    left:50%;
+    transform:translateX(-50%);
+    width:12px;
+    height:12px;
+    background:rgba(200,200,200,0.7);
+    border-radius:50%;
+    opacity:0;
+}
+@keyframes smokeRise{
+    from{opacity:0.8;transform:translate(-50%,0);}
+    to{opacity:0;transform:translate(-50%,-80px);}
+}
+
+/* Burst hearts */
+.burst-heart{
+    position:absolute;
+    font-size:22px;
+    animation:burst 1s ease-out forwards;
+}
+@keyframes burst{
+    from{transform:translate(0,0) scale(1);opacity:1;}
+    to{transform:translate(var(--x),var(--y)) scale(1.5);opacity:0;}
+}
+
+/* Message */
+.message{
+    font-size:20px;
+    font-weight:600;
+    display:none;
+    margin:0 25px 25px 25px;
+    line-height:1.7;
+    color:#ffd6ff;
+    text-shadow:0 0 10px rgba(255,182,255,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+
+<h1>Happy Birthday My Fluf 💖🎀</h1>
+
+<div class="message" id="message">
+If I had one wish tonight,<br>
+it would be to see you smile like this forever. 🌌 <br><br>
+
+More cake, more chaos, more happiness — <br>
+but mostly… more you. 🎂✨ <br><br>
+
+Because you are my favorite feeling,<br>
+my calm place, and my brightest light. <br><br>
+
+Happy Birthday, Fluf. 💖
+</div>
+
+<div class="scene">
+    <div class="cake" id="cake">
+
+        <div class="layer bottom"></div>
+        <div class="layer top-layer"></div>
+        <div class="frost"></div>
+        <div class="drip"></div>
+        <div class="sprinkles"></div>
+        <div class="name">Fluf</div>
+
+        <div class="candle"></div>
+        <div class="flame" id="flame"></div>
+        <div class="smoke" id="smoke"></div>
+        <div class="glow"></div>
+
+    </div>
+</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5bfa6df2d7.mp3?filename=romantic-piano-110624.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Stars */
+for(let i=0;i<120;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    document.body.appendChild(s);
+}
+
+/* Click Event */
+document.getElementById("cake").onclick=function(){
+
+    document.getElementById("flame").style.display="none";
+    document.getElementById("smoke").style.animation="smokeRise 2s forwards";
+
+    /* Burst hearts */
+    for(let i=0;i<15;i++){
+        let heart=document.createElement("div");
+        heart.className="burst-heart";
+        heart.innerHTML="💗";
+        heart.style.left="50%";
+        heart.style.top="70%";
+        heart.style.setProperty("--x",(Math.random()*200-100)+"px");
+        heart.style.setProperty("--y",(Math.random()*-200)+"px");
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),1000);
+    }
+
+    document.getElementById("message").style.display="block";
+    document.getElementById("music").play();
+};
+
+</script>
+
+</body>
+</html>
